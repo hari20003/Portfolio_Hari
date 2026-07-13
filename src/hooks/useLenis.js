@@ -5,6 +5,7 @@ export function useLenis() {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
     const lenis = new Lenis({ lerp: 0.12, wheelMultiplier: 1 })
+    window.__lenis = lenis
     let rafId
     const raf = (time) => {
       lenis.raf(time)
@@ -14,6 +15,7 @@ export function useLenis() {
     return () => {
       cancelAnimationFrame(rafId)
       lenis.destroy()
+      delete window.__lenis
     }
   }, [])
 }

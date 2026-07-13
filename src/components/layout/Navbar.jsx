@@ -48,7 +48,7 @@ export default function Navbar() {
               <Link
                 key={l.label}
                 to={l.to}
-                className="focus-ring rounded-lg px-3 py-2 text-sm text-dim transition-colors hover:text-ink"
+                className="navlink focus-ring rounded-lg px-3 py-2 text-sm text-dim transition-colors hover:text-ink"
               >
                 {l.label}
               </Link>

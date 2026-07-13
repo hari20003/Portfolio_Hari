@@ -1,5 +1,6 @@
 import Hero from '../components/home/Hero'
 import Marquee from '../components/ui/Marquee'
+import Stats from '../components/home/Stats'
 import About from '../components/home/About'
 import WorkGrid from '../components/home/WorkGrid'
 import ExperienceTimeline from '../components/home/ExperienceTimeline'
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <Marquee items={profile.signals} />
+      <Stats />
       <About />
       <WorkGrid />
       <ExperienceTimeline />

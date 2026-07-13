@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
 import { Link, useParams, Navigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { FiArrowLeft, FiArrowRight, FiGithub, FiExternalLink, FiImage } from 'react-icons/fi'
 import Reveal from '../components/ui/Reveal'
 import Badge from '../components/ui/Badge'
+import ProjectVisual from '../components/work/ProjectVisual'
 import { projects, getProject } from '../data/projects'
 
 function Block({ label, children }) {
@@ -48,6 +50,10 @@ export default function CaseStudy() {
             {project.title}
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-dim">{project.subtitle}</p>
+        </Reveal>
+
+        <Reveal delay={0.15} className="mt-12">
+          <ProjectVisual project={project} />
         </Reveal>
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[1fr,300px]">
@@ -123,11 +129,30 @@ export default function CaseStudy() {
               </div>
               <div>
                 <p className="eyebrow mb-3">stack</p>
-                <div className="flex flex-wrap gap-2">
+                <motion.div
+                  className="flex flex-wrap gap-2"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ staggerChildren: 0.05 }}
+                >
                   {project.stack.map((t) => (
-                    <Badge key={t}>{t}</Badge>
+                    <motion.span
+                      key={t}
+                      variants={{
+                        hidden: { opacity: 0, scale: 0.8, y: 8 },
+                        visible: {
+                          opacity: 1,
+                          scale: 1,
+                          y: 0,
+                          transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+                        },
+                      }}
+                    >
+                      <Badge>{t}</Badge>
+                    </motion.span>
                   ))}
-                </div>
+                </motion.div>
               </div>
               <div className="space-y-2 border-t border-white/[0.08] pt-5">
                 {project.github ? (

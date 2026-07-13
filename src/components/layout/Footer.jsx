@@ -35,7 +35,7 @@ export default function Footer() {
             <FiMail size={18} />
           </a>
         </div>
-        <p className="font-mono text-xs text-dim/60">react · vite · gsap · lenis</p>
+        <p className="font-mono text-xs text-dim/60">react · vite · motion · lenis</p>
       </div>
     </footer>
   )
