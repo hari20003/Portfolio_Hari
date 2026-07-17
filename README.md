@@ -1,42 +1,40 @@
-# Hari Portfolio 2026
+# hari.ai — Portfolio of Hariharasudan S
 
-Personal portfolio of **Hariharasudan S** — Full-Stack AI Engineer.
-Premium dark single-page experience + per-project case studies.
+Ultra-modern personal portfolio for a Full-Stack AI Engineer. Dark luxury AI aesthetic — aurora gradients, glassmorphism, Three.js particles, and a local AI resume assistant.
 
-## Stack
+**Stack:** React 19 · TypeScript · Vite · Tailwind CSS · Framer Motion · GSAP · Three.js / React Three Fiber · Lenis · Lucide
 
-- **React 19 + Vite** — SPA with route-level code splitting
-- **Tailwind CSS** — design tokens in `tailwind.config.js`
-- **Framer Motion** — reveals, micro-interactions, command palette
-- **Lenis** — smooth scrolling
-- Self-hosted fonts: Space Grotesk (display) · Inter (body) · JetBrains Mono (accents)
+## Features
 
-## Run
+- Cinematic hero: typing effect, 3D-tilt avatar card, WebGL particle field (CSS fallback on software renderers), magnetic buttons
+- Animated stats, GSAP scroll-drawn experience timeline, project case-study modals
+- Rotating tech orbit + stack switcher, animated RAG-pipeline architecture diagram
+- AI resume assistant (fully local — zero API calls), interactive terminal, Ctrl+K command palette
+- Live GitHub stats, dark/light theme, custom cursor, Lenis smooth scroll
+- SEO meta + JSON-LD, lazy-loaded sections, manual chunk splitting, `prefers-reduced-motion` respected
+
+## Development
 
 ```bash
 npm install
-npm run dev      # http://localhost:5181
-npm run build    # production build -> dist/
+npm run dev        # http://localhost:5181
+npm run typecheck  # tsc --noEmit
+npm run build      # typecheck + production build to dist/
 ```
 
 ## Structure
 
-- `src/data/` — **all content lives here** (profile, experience, projects,
-  skills, education). The resume is the single source of truth; edit these
-  files to update the site.
-- `src/components/ui/` — shared primitives (Reveal, TiltCard, MagneticButton,
-  Badge, Marquee, SectionHeading)
-- `src/components/home/` — home page sections
-- `src/pages/` — Home, CaseStudy (`/work/:slug`), ResumePage, NotFound
-- `public/resume/` — downloadable resume PDF
+```
+src/
+├── data/          # resume-driven content (profile, experience, projects, skills, ai)
+├── hooks/         # useTheme, useLenis, useMagnetic, useTilt
+├── lib/           # cn(), scrollToId(), hasHardwareWebGL()
+└── components/
+    ├── effects/   # Background, ParticleField, CssParticles, CustomCursor, ScrollProgress
+    ├── ui/        # Button, GlassCard, Modal, TypingText, Counter, TextReveal, …
+    ├── layout/    # Navbar, CommandPalette, LoadingScreen, Footer, BackToTop
+    ├── sections/  # Hero, About, Experience, Projects, Skills, AIShowcase, Terminal, Contact
+    └── features/  # ChatAssistant
+```
 
-## Deploy
-
-Static build (`dist/`) deploys anywhere; `public/_redirects` is included for
-Netlify SPA routing.
-
-## Notes
-
-- ⌘K / Ctrl+K opens the command palette.
-- The redesign plan lives in `REDESIGN_PLAN.md`; the pre-redesign CRA site is
-  preserved in git history (commit `dc8848f`).
+Content lives in `src/data/*.ts` — update those files (and `public/resume/`) when the resume changes.
