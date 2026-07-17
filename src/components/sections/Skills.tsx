@@ -24,14 +24,20 @@ function TechOrbit() {
       <div className="absolute inset-[19%] rounded-full border border-[rgb(var(--line)/0.08)]" />
       <div className="absolute inset-[2%] rounded-full border border-[rgb(var(--line)/0.06)]" />
 
-      {/* inner ring */}
+      {/* inner ring — each pill sits on a full-size wrapper that spans the ring,
+          so its radius = the ring's own radius (responsive, no fixed px) */}
       <div className={cn('absolute inset-[19%]', !reduced && 'animate-spin-slow')}>
         {inner.map((tech, i) => {
           const angle = (i / inner.length) * 360
           return (
-            <div key={tech} className="absolute left-1/2 top-1/2" style={{ transform: `rotate(${angle}deg) translateY(calc(-50% - 50% * 1)) rotate(${-angle}deg)` }}>
-              <div className={cn('-translate-x-1/2 -translate-y-1/2', !reduced && 'animate-spin-slow [animation-direction:reverse]')}>
-                <span className="glass block whitespace-nowrap rounded-full px-3 py-1.5 font-mono text-[11px] text-aurora-violet shadow-[0_0_18px_-6px_rgb(139_92_246/0.6)]">
+            <div key={tech} className="absolute inset-0 flex items-start justify-center" style={{ transform: `rotate(${angle}deg)` }}>
+              {/* counter the ring's continuous spin so text stays upright */}
+              <div className={cn('will-change-transform', !reduced && 'animate-spin-slow [animation-direction:reverse]')}>
+                {/* counter the static placement angle so text reads level at rest */}
+                <span
+                  className="glass block whitespace-nowrap rounded-full px-3 py-1.5 font-mono text-[11px] text-aurora-violet shadow-[0_0_18px_-6px_rgb(139_92_246/0.6)]"
+                  style={{ transform: `rotate(${-angle}deg)` }}
+                >
                   {tech}
                 </span>
               </div>
@@ -45,9 +51,12 @@ function TechOrbit() {
         {outer.map((tech, i) => {
           const angle = (i / outer.length) * 360
           return (
-            <div key={tech} className="absolute left-1/2 top-1/2" style={{ transform: `rotate(${angle}deg) translateY(calc(-50% - 50% * 1)) rotate(${-angle}deg)` }}>
-              <div className={cn('-translate-x-1/2 -translate-y-1/2', !reduced && 'animate-spin-slower [animation-direction:reverse]')}>
-                <span className="glass block whitespace-nowrap rounded-full px-3 py-1.5 font-mono text-[11px] text-aurora-cyan shadow-[0_0_18px_-6px_rgb(34_211_238/0.5)]">
+            <div key={tech} className="absolute inset-0 flex items-start justify-center" style={{ transform: `rotate(${angle}deg)` }}>
+              <div className={cn('will-change-transform', !reduced && 'animate-spin-slower [animation-direction:reverse]')}>
+                <span
+                  className="glass block whitespace-nowrap rounded-full px-3 py-1.5 font-mono text-[11px] text-aurora-cyan shadow-[0_0_18px_-6px_rgb(34_211_238/0.5)]"
+                  style={{ transform: `rotate(${-angle}deg)` }}
+                >
                   {tech}
                 </span>
               </div>

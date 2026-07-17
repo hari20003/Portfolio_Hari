@@ -1,5 +1,6 @@
 export const profile = {
   name: 'Hariharasudan S',
+  firstName: 'Hariharasudan',
   shortName: 'Hari',
   roles: [
     'Full-Stack AI Engineer',

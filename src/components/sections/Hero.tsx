@@ -50,7 +50,7 @@ function AvatarCard() {
         </div>
         <div className="flex items-center justify-between px-2 pb-1 pt-3">
           <div>
-            <p className="font-display text-sm font-semibold">{profile.shortName}</p>
+            <p className="font-display text-sm font-semibold">{profile.name}</p>
             <p className="font-mono text-[10px] text-muted">{profile.location}</p>
           </div>
           <span className="flex items-center gap-1.5 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-2.5 py-1 font-mono text-[10px] text-emerald-300">
@@ -100,7 +100,7 @@ export function Hero() {
           </motion.p>
 
           <motion.h1 variants={item} className="font-display text-display font-semibold">
-            Hi, I&apos;m <span className="text-gradient">{profile.shortName}</span> —<br />
+            Hi, I&apos;m <span className="text-gradient">{profile.firstName}</span> —<br />
             I engineer <span className="text-gradient">intelligence</span>.
           </motion.h1>
 
